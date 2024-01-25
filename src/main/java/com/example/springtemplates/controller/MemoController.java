@@ -3,7 +3,6 @@ package com.example.springtemplates.controller;
 
 import com.example.springtemplates.dto.MemoRequestDto;
 import com.example.springtemplates.dto.MemoResponseDto;
-import com.example.springtemplates.entity.Memo;
 import com.example.springtemplates.service.MemoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -27,13 +26,13 @@ public class MemoController {
     }
 
     @PutMapping("/memos/{memoId}")
-    public Long updateMemo(@PathVariable Long memoID, @RequestBody MemoRequestDto memoRequestDto){
-        return memoService.updateMemo(memoID, memoRequestDto);
+    public Long updateMemo(@PathVariable Long memoId, @RequestBody MemoRequestDto memoRequestDto){
+        return memoService.updateMemo(memoId, memoRequestDto);
     }
 
     @DeleteMapping("/memos/{memoId}")
-    public void deleteMemo(@PathVariable Long memoId){
-        memoService.deleteMemo(memoId);
+    public Long deleteMemo(@PathVariable Long memoId){
+       return memoService.deleteMemo(memoId);
     }
 
 }

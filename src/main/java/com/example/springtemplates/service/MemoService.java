@@ -27,24 +27,24 @@ public class MemoService {
         // DB에 저장
         Memo saveMemo = memoRepository.save(memo);
         // Entity -> ResponseDto
-        MemoResponseDto memoResponseDto = new MemoResponseDto(saveMemo);
-        return memoResponseDto;
+        return new MemoResponseDto(saveMemo);
     }
 
     @Transactional
     public Long updateMemo(Long memoId, MemoRequestDto requestDto) {
         Memo memo = memoRepository.findById(memoId).orElseThrow(() -> new IllegalArgumentException("해당 메모가 없습니다."));
-      memo.update(requestDto);
-      return memoId;
+        memo.update(requestDto);
+        return memoId;
 
 //    memo.setTitle(input.getTitle());
 //    return memo;
     }
 
     @Transactional
-    public void deleteMemo(Long memoId) {
+    public Long deleteMemo(Long memoId) {
         Memo memo = memoRepository.findById(memoId).orElseThrow(() -> new IllegalArgumentException("해당 메모가 없습니다."));
-            memoRepository.delete(memo);
+        memoRepository.delete(memo);
+        return memoId;
         //        memoRepository.deleteById(memoId);
 
     }

@@ -17,7 +17,7 @@ public class Memo {
     private String title;
 
     public Memo(MemoRequestDto requestDto) {
-        this.title =title;
+        this.title =requestDto.getTitle();
     }
 
 
